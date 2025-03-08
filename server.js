@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 
 // Configuration
-const API_TOKEN = "xyz"; // Your Hugging Face token
+const API_TOKEN = "Your Hugging Face token"; // Your Hugging Face token
 const API_URL = "https://api-inference.huggingface.co/models/mistralai/Mixtral-8x7B-Instruct-v0.1";
 const headers = {
     "Authorization": `Bearer ${API_TOKEN}`,
