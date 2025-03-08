@@ -1,0 +1,245 @@
+/* .topic{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2px;
+  
+}
+
+.topic h1{
+  position: absolute;
+  font-size: 80px;
+}
+
+.topic h1:nth-child(1){
+  color: transparent;
+  -webkit-text-stroke: 2px #bc1e1e;
+}
+
+.topic h1:nth-child(2){
+  color: #bc1e1e;
+  animation: animate 4s ease-in-out infinite;
+}
+
+@keyframes animate {
+  0%, 100%{
+    clip-path: polygon(0 54%, 22% 63%, 42% 65%, 60% 55%, 78% 48%, 100% 48%, 99% 99%, 0% 100%);
+  }
+  50%{
+    clip-path: polygon(0 54%, 21% 48%, 40% 55%, 59% 68%, 79% 69%, 100% 59%, 99% 99%, 0% 100%);
+  }
+} */
+
+.topic{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: -30px;
+    
+  
+  }
+  
+  .topic h1{
+    position: absolute;
+    align-items: center;
+    text-align: center;
+    font-size: 50px;
+  }
+  
+  .topic h1:nth-child(1){
+    color: #ffffff;
+    text-shadow: 0 0 10px #1dafe4, 0 0 20px #1dafe4, 0 0 40px #1dafe4, 0 0 80px #1dafe4, 0 0 120px #1dafe4;
+    animation: flicker 1.5s infinite alternate;
+  }
+  
+  .topic h1:nth-child(2){
+    color: transparent;
+    -webkit-text-stroke: 2px #1dafe4;
+  }
+  
+  @keyframes flicker {
+    0% {
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.8;
+    }
+  }
+  
+  .main-sig{
+    /* border: 2px solid black; */
+    width: 100%;
+    height: 630px;
+    margin-top: 15%;
+  }
+  .main-sig .leftt{
+    /* border: 2px solid red; */
+    width: 70%;
+    height: 630px;
+  }
+  .main-sig .rightt{
+    /* border: 2px solid pink; */
+    width: 30%;
+    margin-left: 70%;
+    margin-top: -730px;
+  
+  
+  }
+  
+  
+  .main-sig .leftt .sample{
+    margin-left: 70px;
+    border-radius: 20px;
+  
+  }
+  .main-sig .leftt h1,h3,h4{
+    text-align: center;
+  }
+  
+  .main-sig .leftt h1{
+    margin-top: 20%;
+  }
+  
+  
+  .main-sig .leftt h4{
+    margin-top: 10%;
+  }
+  
+  
+  .signup-container {
+    position: relative;
+      max-width: 300px;
+      height: 340px;
+      margin: 50px auto;
+      padding: 40px;
+      background: transparent;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px 3px #f317177c;
+
+      /* margin-top: 210px; */
+      margin-top: 80px;
+  
+    }
+    
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .username, .email, .password{
+      height: 20px;
+      width: 100%;
+      max-width: 300px;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 30px;
+      margin-left: -8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 8px 3px  rgba(208, 10, 10, 0.415);
+
+    }
+  
+    .username:hover, .password:hover, .email:hover{
+      background-color: rgb(236, 232, 232);
+      transition: .3s ease-in;
+  
+    }
+    
+    .submit {
+      /* margin-top: 20px;
+      height: 40px;
+      width: 100%;
+      max-width: 150px;
+      border-radius: 25px;
+      border: none;
+      background: rgb(255, 2, 44);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s; */
+  
+      background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    width: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.5s;
+    background: linear-gradient(90deg, rgb(255, 2, 44), rgb(252, 0, 240));
+    background-size: 200% 100%;
+    animation: neon 2s infinite;
+    margin-left: 100px;
+    }
+  
+    @keyframes neon {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    
+    .submit:hover {
+      background-color: rgb(241, 27, 59);
+      transform: scale(1.02);
+      transition: .3s ease-in;
+    }
+    
+    p {
+      margin-top: 20px;
+    }
+    
+    a {
+      color: #0066ff;
+      text-decoration: none;
+    }
+  
+    .sign-link{
+      color: white;
+    }
+  
+    .sign-link:hover{
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    .signup-container.light {
+      background-color: rgba(255, 255, 255, 0.63);
+      color: black;
+  }
+  
+  .signup-container.dark {
+      background-color: rgba(0, 0, 0, 0.603);
+      color: white;
+  }
+  
+  input, button {
+      margin-top: 10px;
+      padding: 10px;
+  }
+  
