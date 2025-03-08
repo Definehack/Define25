@@ -12,7 +12,7 @@
 ### Team Members
 | Name | Role | GitHub | LinkedIn |
 |------|------|--------|----------|
-| Joshua Sunny nian | Chatbot | [Joshualostinearth](https://github.com/Joshualostonearth) | [Profile](https://www.linkedin.com/in/joshua-sunny-ninan-391517271/) |
+| Joshua Sunny ninan | Chatbot | [Joshualostinearth](https://github.com/Joshualostonearth) | [Profile](https://www.linkedin.com/in/joshua-sunny-ninan-391517271/) |
 | Allan Jigi Mathew | info gathering and presnetation | [Allantalks](https://github.com/Allantalks) | [Profile](https://www.linkedin.com/in/allan-jigi-mathew-694104308/) |
 | Advaith A Arun | Frontend/Backend | [ADU773](https://github.com/ADU773) | [Profile](https://www.linkedin.com/in/advaith-a-arun-3431a82a7/) |
 | Edwin K Mathew | Frontend/Backend | [EdKMathew](https://github.com/EdKMathew) | [Profile](linkedin.com/in/edwin-k-mathew-39a15a296) |
