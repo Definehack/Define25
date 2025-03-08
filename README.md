@@ -38,10 +38,10 @@ _Replace VIDEO_ID with your YouTube video ID or provide an alternative demo link
 ## Technical Implementation
 
 ### Technologies Used
-- **Frontend**: [Technologies]
+- **Frontend**: React
 - **Backend**: [Technologies]
-- **Database**: [Technologies]
-- **APIs**: [Technologies]
+- **Database**: MongoDB
+- **APIs**: Screener,Mistren
 - **DevOps**: [Technologies]
 - **Other Tools**: [Technologies]
 
@@ -97,7 +97,7 @@ _Share your vision for future development_
 - [ ] Completed all sections of this README
 - [ ] Added project demo video
 - [ ] Provided live project link
-- [ ] Ensured all team members are listed
+- [x] Ensured all team members are listed
 - [ ] Included setup instructions
 - [ ] Submitted final code to repository
 
