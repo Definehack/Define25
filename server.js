@@ -3,6 +3,9 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+// Import the transaction data
+const { transactionData } = require('./transaction.js');
+
 // Configuration
 const API_TOKEN = "Your Hugging Face token"; // Your Hugging Face token
 const API_URL = "https://api-inference.huggingface.co/models/mistralai/Mixtral-8x7B-Instruct-v0.1";
@@ -44,83 +47,16 @@ function formatBoldText(text) {
 function isFinanceRelated(message) {
     const lowerMessage = message.toLowerCase().trim();
     const financeKeywords = [
-        // General Finance Terms
         'stock', 'invest', 'interest', 'finance', 'money', 'budget', 'savings', 'retirement',
         'bank', 'loan', 'credit', 'debt', 'fund', 'bond', 'mutual', 'portfolio', 'economy',
         'financial', 'wealth', 'trade', 'trading', 'currency', 'tax', 'insurance', 'mortgage',
         'dividend', 'equity', 'crypto', 'cryptocurrency', 'market', 'capital', 'asset', 'liability',
         'dirham', 'dharam', 'dh', 'dhs', 'aed', 'rupee', 'rupies', 'inr', 'dollar', 'usd',
-        'exchange', 'rate', 'convert', 'fixed', 'deposit', 'account', 'return', 'principal',
-
-        // Digital Banking Terms
-        'upi', 'netbanking', 'neft', 'rtgs', 'imps', 'wallet', 'paytm', 'google pay', 'apple pay', 
-        'paypal', 'venmo', 'revolut', 'stripe', 'square', 'fintech', 'digital wallet',
-        'virtual card', 'contactless', 'online banking', 'mobile banking', 'qr code', 'upi pin',
-
-        // Investment and Trading Terms
-        'etf', 'index fund', 'stock market', 'broker', 'payment','nifty', 'sensex', 'forex', 'nasdaq',
-        'ipo', 'shares', 'bull market', 'bear market', 'futures', 'options', 'hedge fund', 
-        'short selling', 'leveraged', 'derivatives', 'stop loss', 'blue chip',
-
-        // Financial Services Terms
-        'lending', 'microfinance', 'remittance', 'wire transfer', 'overdraft',
-        'credit score', 'fico', 'bank statement', 'atm', 'cheque', 'checkbook', 
-        'credit card', 'debit card', 'prepaid card', 'interest rate', 'balance transfer', 
-        'loan emi', 'emi calculator', 'mortgage calculator', 'personal loan', 'home loan', 
-        'auto loan', 'student loan', 'refinance', 'collateral', 'default', 'foreclosure',
-
-        // Accounting & Bookkeeping
-        'invoice', 'ledger', 'audit', 'cash flow', 'profit', 'loss', 'balance sheet',
-        'income statement', 'tax filing', 'gst', 'vat', 'capital gains', 'net worth',
-        'payroll', 'dividends', 'expense report',
-
-        // International Finance & Currencies
-        'euro', 'eur', 'pound', 'gbp', 'yen', 'jpy', 'yuan', 'cny', 'franc', 'chf',
-        'peso', 'cad', 'aud', 'krw', 'sgd', 'idr', 'myr', 'zar',
-
-        // Crypto-Specific Terms
-        'blockchain', 'bitcoin', 'ethereum', 'dogecoin', 'nft', 'mining', 'wallet address',
-        'ledger', 'defi', 'metamask', 'cold wallet', 'hot wallet',
-        
-        // Banking & Account Management Keywords
-        'account balance', 'check balance', 'reset password', 'lost card', 'stolen card', 
-        'replace card', 'contact information', 'update details', 'two-factor', '2fa', 
-        'authentication', 'security question', 'pin code', 'pin number', 'account number', 
-        'routing number', 'iban', 'swift code', 'branch code', 'internet banking',
-        
-        // Digital Transactions & Payments Keywords
-        'online payment', 'payment failed', 'transaction failed', 'payment declined',
-        'spending limit', 'card limit', 'transaction limit', 'digital wallet', 'e-wallet',
-        'e-statement', 'paperless', 'contactless payment', 'tap to pay', 'nfc payment',
-        'merchant', 'pos terminal', 'payment gateway', 'payment processor', 'chargeback',
-        'refund', 'transaction history', 'pending transaction', 'authorized payment',
-        
-        // Budgeting & Financial Insights Keywords
-        'track expenses', 'expense tracking', 'monthly expenses', '50/30/20 rule', 
-        'budgeting rule', 'reduce spending', 'cut expenses', 'financial planning',
-        'credit score', 'improve credit', 'fico score', 'utility bills', 'financial goal',
-        'spending habit', 'financial health', 'money management', 'expense ratio',
-        'cash flow', 'discretionary spending', 'necessary expenses', 'zero-based budget',
-        
-        // Security & Fraud Prevention Keywords
-        'phishing', 'scam', 'fraud', 'suspicious activity', 'suspicious transaction',
-        'security breach', 'data breach', 'identity theft', 'secure transaction',
-        'tokenization', 'password manager', 'strong password', 'secure password',
-        'account security', 'transaction alert', 'fraud alert', 'security question',
-        'biometric', 'fingerprint', 'face recognition', 'voice recognition',
-        
-        // Sustainability & Eco-Friendly Finance Keywords
-        'green investment', 'sustainable investment', 'esg', 'environmental', 
-        'social', 'governance', 'carbon footprint', 'carbon neutral', 'eco-friendly',
-        'paperless statement', 'digital statement', 'socially responsible', 
-        'ethical investing', 'impact investing', 'green bond', 'climate risk',
-        'sustainability', 'renewable energy', 'clean energy', 'green banking',
-        'sustainable finance', 'green credit card', 'eco card'
+        'exchange', 'rate', 'convert', 'fixed', 'deposit', 'account', 'return', 'principal', 'transactions',
+        'spent', 'lost', 'expense', 'outcome', 'income'
     ];
-
     return financeKeywords.some(keyword => lowerMessage.includes(keyword));
 }
-
 
 // Helper function to handle currency conversion
 function handleCurrencyConversion(message) {
@@ -145,9 +81,230 @@ function handleCurrencyConversion(message) {
             const convertedAmount = amount * rate;
             return `FinBot: ${amount} ${fromCurrency.toUpperCase()} is approximately <b>${convertedAmount.toFixed(2)} ${toCurrency.toUpperCase()}</b> based on current exchange rates.`;
         } else {
-            return "FinBot: Sorry, I don’t have the exchange rate for that currency pair.";
+            return "FinBot: Sorry, I don't have the exchange rate for that currency pair.";
         }
     }
+    return null;
+}
+
+// Helper function to handle transaction data queries
+function handleTransactionQuery(message) {
+    const lowerMessage = message.toLowerCase().trim();
+    
+    // Monthly summary regex patterns
+    const monthlySummaryPattern = /(total|sum|summary).*(income|expense|outcome|transaction).*(september|october|november|december|sept|oct|nov|dec)/i;
+    const monthIncomePattern = /(income).*(september|october|november|december|sept|oct|nov|dec)/i;
+    const monthExpensePattern = /(expense|outcome).*(september|october|november|december|sept|oct|nov|dec)/i;
+    
+    // Overall summary patterns
+    const totalIncomePattern = /(total|sum).*(income)/i;
+    const totalExpensePattern = /(total|sum).*(expense|outcome)/i;
+    const balancePattern = /(balance|net|difference|profit|loss)/i;
+    
+    // Last month spending/lost pattern
+    const lastMonthSpentPattern = /how much have i (?:totally|total) (?:spent|lost) (?:in|for|during) the last month/i;
+    
+    // Transaction category patterns
+    const categoryPattern = /(job|freelance|consulting|rental|project|commission|bonus|subscription|pet|gift|utility|dining|shopping|holiday|new year|celebration)/i;
+    
+    // Extract month from query if present
+    function extractMonth(msg) {
+        const today = new Date('2025-03-08'); // Current date
+        const lastMonth = new Date(today.setMonth(today.getMonth() - 1));
+        const lastMonthStr = lastMonth.toISOString().slice(0, 7); // e.g., "2025-02"
+        
+        if (msg.includes('september') || msg.includes('sept')) return '2024-09';
+        if (msg.includes('october') || msg.includes('oct')) return '2024-10';
+        if (msg.includes('november') || msg.includes('nov')) return '2024-11';
+        if (msg.includes('december') || msg.includes('dec')) return '2024-12';
+        return lastMonthStr; // Default to last month (2025-02, but adjust to latest data month if needed)
+    }
+    
+    // Calculate total income
+    function calculateTotalIncome(month = null) {
+        return transactionData
+            .filter(t => t.type === 'income' && (month ? t.date.startsWith(month) : true))
+            .reduce((sum, t) => sum + t.amount, 0);
+    }
+    
+    // Calculate total expenses
+    function calculateTotalExpenses(month = null) {
+        return transactionData
+            .filter(t => t.type === 'outcome' && (month ? t.date.startsWith(month) : true))
+            .reduce((sum, t) => sum + t.amount, 0);
+    }
+    
+    // Get transactions by category
+    function getTransactionsByCategory(category) {
+        const categoryRegex = new RegExp(category, 'i');
+        return transactionData.filter(t => categoryRegex.test(t.name));
+    }
+    
+    // Last N transactions pattern
+    const lastTransactionsPattern = /last\s+(\d+)\s+transactions/i;
+    const lastTransactionsMatch = lowerMessage.match(lastTransactionsPattern);
+    if (lastTransactionsMatch) {
+        const count = parseInt(lastTransactionsMatch[1]) || 5;
+        
+        // Sort transactions by date (newest first)
+        const sortedTransactions = [...transactionData].sort((a, b) => 
+            new Date(b.date) - new Date(a.date)
+        );
+        
+        // Get the last N transactions
+        const recentTransactions = sortedTransactions.slice(0, count);
+        
+        const transactions = recentTransactions.map(t => {
+            const date = new Date(t.date);
+            const monthName = date.toLocaleString('default', { month: 'long' });
+            return `• ${monthName} ${date.getDate()}: <b>${t.amount.toLocaleString()}</b> (${t.name}) - ${t.type === 'income' ? 'Income' : 'Expense'}`;
+        });
+        
+        return `FinBot: Here are your last ${count} transactions:
+        ${transactions.join('\n    ')}`;
+    }
+    
+    // Last month spending
+    const month = extractMonth(lowerMessage);
+    if (lastMonthSpentPattern.test(lowerMessage)) {
+        // Since data only goes to December 2024, use the latest month available
+        const latestMonth = '2024-12'; // Adjust dynamically if more data is added
+        const expenses = calculateTotalExpenses(latestMonth);
+        const monthName = 'December'; // Hardcoded for now based on data
+        
+        return `FinBot: Based on your transaction data, you have spent a total of <b>${expenses.toLocaleString()}</b> in ${monthName} 2024. Note: The data only includes transactions up to December 2024, so this reflects your spending for that month.`;
+    }
+    
+    // Monthly income or expense summary
+    if (monthlySummaryPattern.test(lowerMessage) && month) {
+        const monthName = month.split('-')[1] === '09' ? 'September' : 
+                          month.split('-')[1] === '10' ? 'October' :
+                          month.split('-')[1] === '11' ? 'November' : 'December';
+        
+        const income = calculateTotalIncome(month);
+        const expenses = calculateTotalExpenses(month);
+        const balance = income - expenses;
+        
+        return `FinBot: Here's your <b>${monthName} ${month.split('-')[0]}</b> summary:
+        • Total Income: <b>${income.toLocaleString()}</b>
+        • Total Expenses: <b>${expenses.toLocaleString()}</b>
+        • Net Balance: <b>${balance.toLocaleString()}</b> (${balance >= 0 ? 'Positive' : 'Negative'})`;
+    }
+    
+    // Monthly income summary
+    if (monthIncomePattern.test(lowerMessage) && month) {
+        const monthName = month.split('-')[1] === '09' ? 'September' : 
+                         month.split('-')[1] === '10' ? 'October' :
+                         month.split('-')[1] === '11' ? 'November' : 'December';
+        
+        const income = calculateTotalIncome(month);
+        const incomeTransactions = transactionData
+            .filter(t => t.type === 'income' && t.date.startsWith(month))
+            .map(t => `• ${t.date.split('-')[2]} ${monthName}: <b>${t.amount.toLocaleString()}</b> (${t.name})`);
+        
+        return `FinBot: Your <b>${monthName} ${month.split('-')[0]}</b> income was <b>${income.toLocaleString()}</b>:
+        ${incomeTransactions.join('\n        ')}`;
+    }
+    
+    // Monthly expense summary
+    if (monthExpensePattern.test(lowerMessage) && month) {
+        const monthName = month.split('-')[1] === '09' ? 'September' : 
+                         month.split('-')[1] === '10' ? 'October' :
+                         month.split('-')[1] === '11' ? 'November' : 'December';
+        
+        const expenses = calculateTotalExpenses(month);
+        const expenseTransactions = transactionData
+            .filter(t => t.type === 'outcome' && t.date.startsWith(month))
+            .map(t => `• ${t.date.split('-')[2]} ${monthName}: <b>${t.amount.toLocaleString()}</b> (${t.name})`);
+        
+        return `FinBot: Your <b>${monthName} ${month.split('-')[0]}</b> expenses were <b>${expenses.toLocaleString()}</b>:
+        ${expenseTransactions.join('\n        ')}`;
+    }
+    
+    // Total income summary
+    if (totalIncomePattern.test(lowerMessage)) {
+        const income = calculateTotalIncome();
+        
+        // Group by month
+        const monthlyIncome = {
+            'September': calculateTotalIncome('2024-09'),
+            'October': calculateTotalIncome('2024-10'),
+            'November': calculateTotalIncome('2024-11'),
+            'December': calculateTotalIncome('2024-12')
+        };
+        
+        return `FinBot: Your <b>total income</b> from September to December was <b>${income.toLocaleString()}</b>:
+        • September: <b>${monthlyIncome['September'].toLocaleString()}</b>
+        • October: <b>${monthlyIncome['October'].toLocaleString()}</b>
+        • November: <b>${monthlyIncome['November'].toLocaleString()}</b>
+        • December: <b>${monthlyIncome['December'].toLocaleString()}</b>`;
+    }
+    
+    // Total expense summary
+    if (totalExpensePattern.test(lowerMessage)) {
+        const expenses = calculateTotalExpenses();
+        
+        // Group by month
+        const monthlyExpenses = {
+            'September': calculateTotalExpenses('2024-09'),
+            'October': calculateTotalExpenses('2024-10'),
+            'November': calculateTotalExpenses('2024-11'),
+            'December': calculateTotalExpenses('2024-12')
+        };
+        
+        return `FinBot: Your <b>total expenses</b> from September to December were <b>${expenses.toLocaleString()}</b>:
+        • September: <b>${monthlyExpenses['September'].toLocaleString()}</b>
+        • October: <b>${monthlyExpenses['October'].toLocaleString()}</b>
+        • November: <b>${monthlyExpenses['November'].toLocaleString()}</b>
+        • December: <b>${monthlyExpenses['December'].toLocaleString()}</b>`;
+    }
+    
+    // Balance query
+    if (balancePattern.test(lowerMessage)) {
+        const totalIncome = calculateTotalIncome();
+        const totalExpenses = calculateTotalExpenses();
+        const balance = totalIncome - totalExpenses;
+        
+        // Monthly breakdown
+        const monthlySummary = ['09', '10', '11', '12'].map(m => {
+            const month = `2024-${m}`;
+            const monthName = m === '09' ? 'September' : m === '10' ? 'October' : m === '11' ? 'November' : 'December';
+            const income = calculateTotalIncome(month);
+            const expenses = calculateTotalExpenses(month);
+            const balance = income - expenses;
+            return `• ${monthName}: <b>${balance.toLocaleString()}</b> (Income: ${income.toLocaleString()} - Expenses: ${expenses.toLocaleString()})`;
+        });
+        
+        return `FinBot: Your <b>overall balance</b> from September to December is <b>${balance.toLocaleString()}</b>:
+        • Total Income: <b>${totalIncome.toLocaleString()}</b>
+        • Total Expenses: <b>${totalExpenses.toLocaleString()}</b>
+        
+        Monthly breakdown:
+        ${monthlySummary.join('\n        ')}`;
+    }
+    
+    // Category queries
+    const categoryMatch = lowerMessage.match(categoryPattern);
+    if (categoryMatch) {
+        const category = categoryMatch[1].toLowerCase();
+        const relatedTransactions = getTransactionsByCategory(category);
+        
+        if (relatedTransactions.length > 0) {
+            const transactions = relatedTransactions.map(t => {
+                const date = new Date(t.date);
+                const monthName = date.toLocaleString('default', { month: 'long' });
+                return `• ${monthName} ${date.getDate()}: <b>${t.amount.toLocaleString()}</b> (${t.name}) - ${t.type === 'income' ? 'Income' : 'Expense'}`;
+            });
+            
+            const total = relatedTransactions.reduce((sum, t) => sum + (t.type === 'income' ? t.amount : -t.amount), 0);
+            
+            return `FinBot: Here are your transactions related to "${category}":
+            ${transactions.join('\n            ')}
+            
+            Net impact on your finances: <b>${total.toLocaleString()}</b> ${total >= 0 ? '(Positive)' : '(Negative)'}`;
+        }
+    }
+
     return null;
 }
 
@@ -161,13 +318,19 @@ app.post('/chat', async (req, res) => {
             return res.json({ response });
         }
 
+        // Check for transaction data query
+        const transactionResponse = handleTransactionQuery(message);
+        if (transactionResponse) {
+            return res.json({ response: transactionResponse });
+        }
+
         // Check for currency conversion
         const conversionResponse = handleCurrencyConversion(message);
         if (conversionResponse) {
             return res.json({ response: conversionResponse });
         }
 
-        // Check FAQ first
+        // Check FAQ
         const faqAnswer = checkFAQ(message);
         if (faqAnswer) {
             const formattedResponse = formatBoldText(`FinBot: ${faqAnswer}`);
