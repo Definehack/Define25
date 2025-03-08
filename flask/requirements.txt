@@ -1,0 +1,8 @@
+flask
+flask-cors
+langchain
+openpyxl
+pymongo
+numpy
+pandas
+-e

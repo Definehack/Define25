@@ -1,0 +1,4 @@
+flask/.env
+node/.env
+node/node_modules
+.env
