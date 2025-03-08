@@ -1,0 +1,20 @@
+.login-button {
+    background: linear-gradient(90deg, #774EBD 0%, #372457 100%);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: fixed;
+    top: 20px;
+    right: 40px;
+    z-index: 1000;
+}
+
+.login-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
