@@ -1,0 +1,16 @@
+.stock-tracker {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+.stock-tracker h2 {
+    color: #333;
+}
+
+.stock-details {
+    margin-top: 20px;
+}
+
+.stock-details p {
+    margin: 5px 0;
+}

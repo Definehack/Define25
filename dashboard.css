@@ -1,0 +1,553 @@
+.dashboard-container {
+    background: #1A1A1A;
+    min-height: 100vh;
+    width: 100%;
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.dashboard-container.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-spinner {
+    color: #774EBD;
+    font-size: 1.2rem;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(18, 18, 18, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #774EBD 0%, #372457 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dashboard-nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.dashboard-nav a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.dashboard-nav a.active,
+.dashboard-nav a:hover {
+    color: #774EBD;
+}
+
+.dashboard-main {
+    display: flex;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+}
+
+.dashboard-content {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Shortened width */
+    /* gap: 2rem; */
+    /* padding: 2rem; */
+    overflow-y: auto;
+    background: #1A1A1A;
+    width: 1800px;
+    max-width: 200vw; /* Shortened width */
+}
+
+.dashboard-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    height: 100%;
+    max-height: calc(100vh - 85px);
+    overflow-y: auto;
+}
+
+.dashboard-right {
+    height: 100%;
+    max-height: calc(100vh - 85px);
+    /* padding-right: 0.5rem; */
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    overflow-y: auto;
+}
+
+.chatbot-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgba(18, 18, 18, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.chatbot-header {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.chatbot-header h3 {
+
+    margin: 0;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 1.1rem;
+}
+
+.chatbot-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.chatbot-messages .message {
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.chatbot-messages .message {
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    max-width: 85%;
+    color: white; /* Change message text color to white */
+}
+
+.chatbot-messages .user {
+    background: rgba(119, 78, 189, 0.1);
+    align-self: flex-end;
+    border-left: 3px solid #774EBD;
+}
+
+.chatbot-messages .bot {
+    background: rgba(255, 255, 255, 0.05);
+    align-self: flex-start;
+    border-left: 3px solid #372457;
+}
+
+.chatbot-input {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chatbot-input input {
+    flex: 1;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: white;
+    width: 570px;
+}
+
+.chatbot-input button {
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(90deg, #774EBD 0%, #372457 100%);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.chatbot-input button:hover {
+    opacity: 0.9;
+} 
+*/
+
+.chatbot-container {
+    height: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+    background: rgba(18, 18, 18, 0.95);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+}
+
+.chatbot-header {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #774EBD rgba(255, 255, 255, 0.1);
+}
+
+.chatbot-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #774EBD 0%, #372457 100%);
+    border-radius: 3px;
+}
+
+.message {
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    max-width: 80%;
+    color: white; /* Change message text color to white */
+}
+
+.message.bot {
+    background: rgba(119, 78, 189, 0.1);
+    border-left: 3px solid #774EBD;
+}
+
+.chatbot-input {
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chatbot-input input {
+    flex: 1;
+    padding: 0.8rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.chatbot-input button {
+    background: linear-gradient(90deg, #774EBD 0%, #372457 100%);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .dashboard-content {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .dashboard-header {
+        padding: 1rem;
+    }
+
+    .dashboard-nav {
+        display: none;
+    }
+
+    .bottom-row {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-card,
+    .bottom-row-item {
+        height: 350px;
+        min-height: 300px;
+    }
+
+    .dashboard-right {
+        height: 400px;
+    }
+}
+
+.dashboard-card {
+    background: rgba(18, 18, 18, 0.95);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 450px;
+    min-height: 400px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.stats {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.stat-item {
+    padding: 15px;
+    background: linear-gradient(90deg, #774EBD 0%, #372457 100%);
+    border-radius: 8px;
+    flex: 1;
+}
+
+.logout-btn {
+    background: linear-gradient(90deg, #774EBD 0%, #372457 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.logout-confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.logout-confirm-modal {
+    background: #1A1A1A;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.logout-confirm-modal h3 {
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.logout-confirm-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.logout-confirm-buttons button {
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.logout-confirm-buttons button:first-child {
+    background: linear-gradient(90deg, #774EBD 0%, #372457 100%);
+    color: white;
+}
+
+.logout-confirm-buttons button:last-child {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.87);
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .transaction-history {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .dashboard-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.bottom-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    height: auto;
+    min-height: 400px;
+    padding: 0;
+}
+
+.bottom-row-item {
+    height: 100%;
+    min-height: 400px;
+    margin: 0;
+    overflow: hidden;
+}
+
+@media (max-width: 1200px) {
+    .bottom-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1400px) {
+    .dashboard-main {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .dashboard-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        height: auto;
+        min-height: calc(100vh - 80px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 1rem;
+    }
+
+    .dashboard-left {
+        height: auto;
+        max-height: none;
+    }
+
+    .dashboard-card {
+        height: 400px;
+    }
+
+    .bottom-row {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 350px;
+        width: 100%;
+        max-width: 100%;
+        gap: 2rem;
+    }
+
+    .bottom-row-item {
+        height: 350px;
+        min-height: 350px;
+    }
+
+    .dashboard-right {
+        position: relative;
+        height: 100%;
+        max-height: 100%;
+        margin-top: 1rem;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .chatbot-container {
+        height: 100%;
+        position: relative;
+    }
+}
+
+.split-pay-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.split-pay-modal.active {
+    display: flex; /* Show the modal when active */
+}
+
+.split-pay-container {
+    background: #191919;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.split-pay-header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #8662C2;
+}
+
+.split-pay-card {
+    background: #191919;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+
+.split-pay-form-group {
+    margin-bottom: 15px;
+}
+
+.split-pay-form-group input,
+.split-pay-form-group button {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.split-pay-form-group button {
+    background: #8662C2;
+    color: #121212;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.split-pay-form-group button:hover {
+    background: #6739B7;
+}
+
+.split-pay-transaction-list {
+    list-style: none;
+}
+
+.split-pay-transaction-item {
+    padding: 10px;
+    border-bottom: 1px solid #121212;
+}
+
+.split-pay-settlement-result {
+    background: #e8f4f8;
+    padding: 15px;
+    border-radius: 4px;
+}
