@@ -1,0 +1,141 @@
+.analytics-container {
+    background: rgba(18, 18, 18, 0.95);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 400px;
+    max-height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.year-select {
+    background: rgba(18, 18, 18, 0.95);
+    color: rgba(255, 255, 255, 0.87);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+
+.year-select:hover {
+    border-color: #774EBD;
+}
+
+.year-select:focus {
+    outline: none;
+    border-color: #774EBD;
+}
+
+@media screen and (max-width: 900px) {
+    .analytics-container {
+        overflow-x: auto;
+        padding: 1rem;
+        min-height: 450px;
+    }
+    
+    .chart-container {
+        height: calc(100% - 70px);
+    }
+    
+    .recharts-wrapper {
+        width: 90% !important;
+        height: 85% !important;
+        transform: scale(0.9);
+    }
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 50px);
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recharts-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    height: 90% !important;
+    margin: 0 auto;
+    transform-origin: top center;
+    transform: scale(0.85);
+}
+
+.recharts-responsive-container {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 250px !important;
+}
+
+.chart-container h3 {
+    color: rgba(255, 255, 255, 0.87);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Tooltip customization */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+    background-color: rgba(18, 18, 18, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+.recharts-tooltip-item-list {
+    color: rgba(255, 255, 255, 0.87);
+}
+
+/* Legend customization */
+.recharts-default-legend {
+    margin-top: 1rem !important;
+}
+
+.recharts-legend-item-text {
+    color: rgba(255, 255, 255, 0.87) !important;
+}
+
+/* Reset any transformations on the surface */
+.recharts-surface {
+    overflow: visible;
+    transform: none;
+}
+
+/* Remove scaling from bars to fix alignment */
+.recharts-bar-rectangle {
+    transform: none;
+}
+
+/* Adjust text positioning */
+.recharts-text {
+    font-size: 11px;
+}
+
+.recharts-cartesian-axis-tick-value {
+    transform: translateY(3px);
+}
+
+/* Ensure bars align with grid lines */
+.recharts-bar {
+    transform-origin: center;
+    shape-rendering: crispEdges;
+}
+
+@media screen and (max-width: 768px) {
+    .analytics-container {
+        padding: 1rem;
+        min-height: 350px;
+    }
+}
