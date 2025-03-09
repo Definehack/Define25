@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yoga Asanas</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='yoga-style.css') }}">
+    <link rel="stylesheet" href="../static/nav.css">
+    <style>
+        body{
+            background-image: url("../static/img/back_gr.jpeg");
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="../static/img/logo2.png" alt="logo">
+        <h4>PRANA</h4>
+        <nav>
+            <ul>
+                <li><a href="../static/home.html">Home</a></li>
+                <li><a href="http://127.0.0.1:5000/">Asanas</a></li>
+                <li><a href="../static/sugg.html">Suggessions</a></li>
+                <li><a href="../static/about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>YOGA ASANAS</h1>
+    <div class="wrapper">
+        <div class="row">
+            <div class="card">
+                <div class="content">
+                    <div class="front" style="background-image: url('static\\img\\Trikonasana.jpg');">
+                        <div class="inner">
+                            <h2>Trikonasana</h2>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div class="inner">
+                            <p>Improves digestion and strengthens legs and arms.</p>
+                            <a href="{{ url_for('yoga_try', asana='Trikonasana') }}">
+                                <button>Try Trikonasana</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="content">
+                    <div class="front" style="background-image: url('static\\img\\Virabadrasana.png');">
+                        <div class="inner">
+                            <h2>Virabadrasana</h2>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div class="inner">
+                            <p>Strengthens legs, improves balance, and enhances focus.</p>
+                            <a href="{{ url_for('yoga_try', asana='Virabadrasana') }}">
+                                <button>Try Virabadrasana</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="content">
+                    <div class="front" style="background-image: url('static\\img\\Vrikshasana.png');">
+                        <div class="inner">
+                            <h2>Vrikshasana</h2>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div class="inner">
+                            <p>Improves balance and strengthens the back and legs.</p>
+                            <a href="{{ url_for('yoga_try', asana='Vrikshasana') }}">
+                                <button>Try Vrikshasana</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="card">
+                <div class="content">
+                    <div class="front" style="background-image: url('static\\img\\Bhujangasana.png');">
+                        <div class="inner">
+                            <h2>Bhujangasana</h2>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div class="inner">
+                            <p>Strengthens the lower back and improves circulation.</p>
+                            <a href="{{ url_for('yoga_try', asana='Bhujangasana') }}">
+                                <button>Try Bhujangasana</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="content">
+                    <div class="front" style="background-image: url('static\\img\\Sukhasana.png');">
+                        <div class="inner">
+                            <h2>Sukhasana</h2>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div class="inner">
+                            <p>Calms the mind and improves posture.</p>
+                            <a href="{{ url_for('yoga_try', asana='Sukhasana') }}">
+                                <button>Try Sukhasana</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="content">
+                    <div class="front" style="background-image: url('static\\img\\Chakrasana.png');">
+                        <div class="inner">
+                            <h2>Chakrasana</h2>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div class="inner">
+                            <p>Stimulates the thyroid and pituitary glands.</p>
+                            <a href="{{ url_for('yoga_try', asana='Chakrasana') }}">
+                                <button>Try Chakrasana</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

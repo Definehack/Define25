@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ asana }} Pose Detection</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .video-container {
+            position: relative;
+            width: 50%;
+            max-width: 600px;
+        }
+
+        .video-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+        }
+
+        .accuracy-box {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Detecting: {{ asana }}</h1>
+
+    <div class="container">
+        <div class="video-container">
+            <img id="video-stream" src="{{ url_for('video_feed1') }}?asana={{ asana }}" alt="Pose Detection">
+            <div id="accuracy" class="accuracy-box">Waiting for Pose...</div>
+        </div>
+    </div>
+
+    <script>
+        function updateAccuracy() {
+            fetch("{{ url_for('video_feed1') }}?asana={{ asana }}")
+                .then(response => response.text())
+                .then(data => {
+                    let match = data.match(/([A-Za-z\s]+),(\d+\.\d+)/);
+                    if (match) {
+                        let detectedPose = match[1].trim();
+                        let accuracy = parseFloat(match[2]);
+
+                        if (detectedPose === "{{ asana }}") {
+                            document.getElementById("accuracy").innerText = `Pose: ${detectedPose} | Accuracy: ${accuracy.toFixed(2)}%`;
+                        } else {
+                            document.getElementById("accuracy").innerText = "Pose Not Recognized";
+                        }
+                    }
+                });
+        }
+
+        setInterval(updateAccuracy, 1000);
+    </script>
+
+</body>
+</html>
