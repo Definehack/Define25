@@ -1,4 +1,3 @@
-
 # Define 3.0
 The official template repository for Define 3.0
 
@@ -6,48 +5,48 @@ The official template repository for Define 3.0
 
 
 
-# < Project Name >
+# FlowFi
  Cover Image  If applicable
 
 ### Team Information
-- **Team Name**: <Team Name> 
-- **Track**: < Track >
+- Team Name: Strike4 
+- Track: Fintech
 
 ### Team Members
 | Name | Role | GitHub | LinkedIn |
 |------|------|--------|----------|
-| [Full Name] | [Role] | [@username](https://github.com/username) | [Profile](https://linkedin.com/in/username) |
-| [Full Name] | [Role] | [@username](https://github.com/username) | [Profile](https://linkedin.com/in/username) |
-| [Full Name] | [Role] | [@username](https://github.com/username) | [Profile](https://linkedin.com/in/username) |
-| [Full Name] | [Role] | [@username](https://github.com/username) | [Profile](https://linkedin.com/in/username) |
+| [Gokul G] | [Frontend Developer] | [@GOKULGSECE](https://github.com/GOKULGSECE) | [Profile](https://linkedin.com/in/gokul-g-760a23259) |
+| [Rithish S] | [Backend Developer] | [@rithish5513u](https://github.com/rithish5513u) | [Profile](https://linkedin.com/in/rithish-s) |
+| [Rishab S] | [Backend Developer] | [@rishabtr](https://github.com/rishabtr) | [Profile](https://linkedin.com/in/rishab-s-0aa28b21a) |
+| [Tamilkumaran N] | [Front End Developer] | [@tamilkumaran17](https://github.com/tamilkumaran17) | [Profile](https://linkedin.com/in/tamilkumarann) |
 
 ## Project Details
 
 ### Overview
-_A concise summary of your project (2-3 sentences)_
+We're building a fintech platform with an AI-powered chatbot to provide financial insights and customer support. Our platform pulls data from publicly available APIs to deliver personalized financial news. With a user-friendly dashboard, you can track your finances, analyze trends, and manage a virtual investment portfolio. Plus, you can upload your bank statements for automatic income and expense analysis. Our goal is to make financial management easier, helping users make smarter money decisions.
 
 ### Problem Statement
-_Describe the problem your project aims to solve_
+Develop a basic prototype of a fintech website with an AI-powered chatbot that provides users with financial insights and customer support. The website should have a clean, user-friendly interface with a simple dashboard displaying sample financial data and a chatbot capable of handling basic FAQs related to fintech services.
 
 ### Solution
-_Explain your approach to solving the problem_
+We're building a fintech platform with an AI-powered chatbot to provide financial insights and customer support. Our platform pulls data from publicly available APIs to deliver personalized financial news. With a user-friendly dashboard, you can track your finances, analyze trends, and manage a virtual investment portfolio. Plus, you can upload your bank statements for automatic income and expense analysis. Our goal is to make financial management easier, helping users make smarter money decisions.
 
 ### Demo
 [![Project Demo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
-_Replace VIDEO_ID with your YouTube video ID or provide an alternative demo link_
+Replace VIDEO_ID with your YouTube video ID or provide an alternative demo link
 
 ### Live Project
-[Project Name](https://your-project-url.com)
+[Project Name]FlowFii
 
 ## Technical Implementation
 
 ### Technologies Used
-- **Frontend**: [Technologies]
-- **Backend**: [Technologies]
-- **Database**: [Technologies]
-- **APIs**: [Technologies]
-- **DevOps**: [Technologies]
-- **Other Tools**: [Technologies]
+- Frontend: ReactJS
+- Backend: NodeJS/Flask
+- Database: MongoDB
+- APIs: [Technologies]
+- DevOps: [Technologies]
+- Other Tools: [Technologies]
 
 ### Key Features
 - Feature 1
@@ -62,25 +61,25 @@ _Replace VIDEO_ID with your YouTube video ID or provide an alternative demo link
 - Requirement 3
 
 ### Installation 
-```bash
+bash
 
-```
+
 
 ### Running the Project
-```bash
+bash
 
-```
+
 
 ## Additional Resources
 
 ### Project Timeline
-_Brief overview of your development process and milestones_
+Brief overview of your development process and milestones
 
 ### Challenges Faced
-_Discuss technical challenges and how you overcame them_
+Discuss technical challenges and how you overcame them
 
 ### Future Enhancements
-_Share your vision for future development_
+Share your vision for future development
 
 ### References (if any)
 - [Reference 1](link)

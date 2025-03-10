@@ -1,0 +1,8 @@
+flask/.env
+node/.env
+node/node_modules
+.env
+__pycache__
+flask_backend/__pycache__
+flask_backend/src/__pycache__
+flask_backend/src/data

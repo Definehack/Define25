@@ -1,0 +1,9 @@
+flask
+flask-cors
+openai
+numpy
+pandas
+newsapi-python
+google-generativeai
+xlrd
+yfinance
